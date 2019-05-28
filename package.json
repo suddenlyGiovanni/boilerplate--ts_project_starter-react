@@ -1,0 +1,81 @@
+{
+  "name": "boilerplate--ts_project_starter-react",
+  "version": "1.0.1",
+  "description": "My highly opinionated starting point for a CRA TypeScript project",
+  "scripts": {
+    "cm": "git-cz",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "purge-node_modules": "rm -rf node_modules",
+    "lint:fix": "eslint './src/**/*.{ts,tsx}'",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suddenlyGiovanni/boilerplate--ts_project_starter-react.git"
+  },
+  "author": "suddenlyGiovanni <ravalico.giovanni@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suddenlyGiovanni/boilerplate--ts_project_starter-react/issues"
+  },
+  "homepage": "https://github.com/suddenlyGiovanni/boilerplate--ts_project_starter-react#readme",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.2",
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "16.8.4",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "source-map-explorer": "^1.8.0",
+    "typescript": "3.4.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
