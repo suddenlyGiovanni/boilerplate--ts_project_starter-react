@@ -10,33 +10,34 @@ module.exports = {
     'prettier/@typescript-eslint',
     // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     'plugin:prettier/recommended',
-    'plugin:jest/recommended'
+    'plugin:jest/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2019, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
     project: './tsconfig.json',
     ecmaFeatures: {
-      impliedStrict: true
-    }
+      impliedStrict: true,
+    },
   },
   env: {
     browser: true,
     es6: true,
-    jest: true
+    jest: true,
+    jasmine: true,
   },
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     'prettier/prettier': ['error', { singleQuote: true }],
     '@typescript-eslint/explicit-function-return-type': [
       'error',
-      { allowTypedFunctionExpressions: true }
-    ]
+      { allowTypedFunctionExpressions: true },
+    ],
   },
   settings: {
     react: {
       pragma: 'React',
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
 }
