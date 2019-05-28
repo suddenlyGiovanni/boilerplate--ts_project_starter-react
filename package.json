@@ -1,6 +1,6 @@
 {
   "name": "boilerplate--ts_project_starter-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My highly opinionated starting point for a CRA TypeScript project",
   "scripts": {
     "cm": "git-cz",
