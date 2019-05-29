@@ -2,16 +2,6 @@
   "name": "boilerplate--ts_project_starter-react",
   "version": "1.0.0",
   "description": "My highly opinionated starting point for a CRA TypeScript project",
-  "scripts": {
-    "cm": "git-cz",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "purge-node_modules": "rm -rf node_modules",
-    "lint:fix": "eslint './src/**/*.{ts,tsx}'",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/suddenlyGiovanni/boilerplate--ts_project_starter-react.git"
@@ -25,7 +15,10 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-redux": "^7.1.0-alpha.5",
+    "react-scripts": "3.0.1",
+    "redux": "^4.0.1",
+    "redux-starter-kit": "^0.5.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
@@ -34,6 +27,7 @@
     "@types/node": "12.0.2",
     "@types/react": "^16.8.18",
     "@types/react-dom": "16.8.4",
+    "@types/react-redux": "^7.0.9",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "commitizen": "^3.1.1",
@@ -47,6 +41,16 @@
     "prettier": "^1.17.1",
     "source-map-explorer": "^1.8.0",
     "typescript": "3.4.5"
+  },
+  "scripts": {
+    "cm": "git-cz",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "purge-node_modules": "rm -rf node_modules",
+    "lint:fix": "eslint './src/**/*.{ts,tsx}'",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "husky": {
     "hooks": {
