@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux-starter-kit'
 
-import { duckReducer } from 'features/example-feature'
+import { duckReducer } from 'features/duck-feature'
 
 export const rootReducer = combineReducers({
-  ducks: duckReducer,
+  duck: duckReducer,
   // ...
 })

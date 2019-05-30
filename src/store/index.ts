@@ -1,7 +1,12 @@
 import { configureStore } from 'redux-starter-kit'
 import { rootReducer } from './root-reducer'
+import { RootAction, RootState } from 'typesafe-actions'
 
-export const store = configureStore({
+// rehydrate state on app start
+const initialState = {}
+
+// create store
+export const store = configureStore<RootState, RootAction>({
   /**
    * A single reducer function that will be used as the root reducer,
    * or an object of slice reducers that will be passed to combineReducers()
@@ -14,7 +19,7 @@ export const store = configureStore({
   devTools: true,
 
   /** Same as current createStore. */
-  // preloadedState?: State,
+  preloadedState: initialState,
 
   /** An optional array of Redux store enhancers */
   // enhancers?: ReduxStoreEnhancer[],

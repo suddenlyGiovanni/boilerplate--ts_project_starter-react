@@ -1,3 +1,4 @@
+import { DuckState } from './reducer'
 /**
  * @description Selectors
  * In case your state shape is more complex you need selectors in order to map parts of the`state`
@@ -10,7 +11,8 @@
  * ** interface ** of the duck.
  */
 
-export const checkIfDuckIsInRange = (state: any): boolean =>
-  state.duck.distance > 1000
+export const checkIfDuckIsInRange = (state: DuckState): boolean =>
+  state.distance > 1000
 
-export const checkIfDuckIsQuaking = (state: any): boolean => state.duck.quacking
+export const checkIfDuckIsQuaking = (state: DuckState): boolean =>
+  state.quacking

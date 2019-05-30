@@ -1,22 +1,22 @@
-import React from 'react'
+import * as React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import { store } from 'store/store'
-
 import 'styles/index.css'
-import { App } from 'components/app/App'
 
+import { store } from 'store'
+import { App } from 'components/app/App'
 import * as serviceWorker from './serviceWorker'
 
 const rootElement = document.getElementById('root')
 
-ReactDOM.render(
+const Root: React.FC = () => (
   <Provider store={store}>
     <App />
-  </Provider>,
-  rootElement
+  </Provider>
 )
+
+ReactDOM.render(<Root />, rootElement)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
