@@ -1,4 +1,4 @@
-import { DucksState } from './reducer'
+import { RootState } from 'typesafe-actions'
 /**
  * @description Selectors
  * In case your state shape is more complex you need selectors in order to map parts of the`state`
@@ -11,10 +11,10 @@ import { DucksState } from './reducer'
  * ** interface ** of the duck.
  */
 
-export const checkIfDuckIsInRange = (state: DucksState): boolean =>
-  state.distance > 1000
+export const checkIfDuckIsInRange = (state: RootState): boolean =>
+  state.duck.distance > 1000
 
-export const checkIfDuckIsQuaking = (state: DucksState): boolean =>
-  state.quacking
+export const checkIfDuckIsQuaking = (state: RootState): boolean =>
+  state.duck.quacking
 
-export const duckDistance = (state: DucksState): number => state.distance
+export const duckDistance = (state: RootState): number => state.duck.distance

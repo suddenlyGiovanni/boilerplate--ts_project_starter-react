@@ -2,8 +2,10 @@ import {
   duckActions as actions,
   duckReducer as reducer,
   duckTypes as types,
+  duckSelectors as selectors,
 } from '.'
 import { DucksState } from './reducer'
+import { RootState } from 'typesafe-actions'
 
 /**
  * FIXTURES
@@ -12,6 +14,10 @@ const getInitialState = (initial?: Partial<DucksState>) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return reducer(initial as DucksState, {} as any)
 }
+
+const getRootState = (initial?: Partial<DucksState>): RootState => ({
+  duck: getInitialState(initial),
+})
 
 describe('feature: `duck`', () => {
   describe('actions', () => {
@@ -63,6 +69,33 @@ describe('feature: `duck`', () => {
         expect(state1.distance).toBe(distance)
         expect(state2.distance).toBe(distance + distance)
       })
+    })
+  })
+
+  describe('selectors', () => {
+    const initialRootState = getRootState()
+
+    it('checkIfDuckIsInRange', () => {
+      const state1 = getInitialState({ distance: 1001 }) //?
+      const rootState1 = getRootState(state1)
+
+      expect(selectors.checkIfDuckIsInRange(initialRootState)).toBe(false)
+      expect(selectors.checkIfDuckIsInRange(rootState1)).toBe(true)
+    })
+
+    it('checkIfDuckIsQuaking', () => {
+      expect(selectors.checkIfDuckIsQuaking(initialRootState)).toBe(false)
+      const state1 = getInitialState({ quacking: true })
+      const rootState1 = getRootState(state1)
+      expect(selectors.checkIfDuckIsQuaking(rootState1)).toBe(true)
+    })
+
+    it('duckDistance', () => {
+      const distance = 100
+      expect(selectors.duckDistance(initialRootState)).toBe(0)
+      expect(
+        selectors.duckDistance(getRootState(getInitialState({ distance })))
+      ).toBe(distance)
     })
   })
 })

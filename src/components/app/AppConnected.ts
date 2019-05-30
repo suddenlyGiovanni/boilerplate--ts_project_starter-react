@@ -5,8 +5,8 @@ import { duckSelectors, duckActions } from 'features/duck-feature'
 
 function mapStateToProps(state: RootState) {
   return {
-    quaking: duckSelectors.checkIfDuckIsQuaking(state.duck),
-    distance: duckSelectors.duckDistance(state.duck),
+    quaking: duckSelectors.checkIfDuckIsQuaking(state),
+    distance: duckSelectors.duckDistance(state),
   }
 }
 
