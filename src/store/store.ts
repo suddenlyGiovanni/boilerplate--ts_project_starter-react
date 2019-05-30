@@ -1,5 +1,5 @@
 import { configureStore } from 'redux-starter-kit'
-import { rootReducer } from './rootReducer'
+import { rootReducer } from './root-reducer'
 
 export const store = configureStore({
   /**
