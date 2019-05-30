@@ -30,6 +30,7 @@ module.exports = {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     'prettier/prettier': ['error', { singleQuote: true }],
     '@typescript-eslint/explicit-function-return-type': 'off',
+    "react/prop-types": ['off']
   },
   settings: {
     react: {
