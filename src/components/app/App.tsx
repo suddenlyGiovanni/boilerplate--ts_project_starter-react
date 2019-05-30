@@ -5,7 +5,7 @@ import { ConnectedProps } from './AppConnected'
 import logo from 'assets/logo.svg'
 import './App.css'
 
-type Props = ConnectedProps
+export type Props = ConnectedProps
 export const App: React.FC<Props> = props => {
   const { quaking, distance, quack, swim } = props
 
