@@ -1,10 +1,19 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React from 'react'
+import * as React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './App'
+import { render } from '@testing-library/react'
+import { App, Props } from './App'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
-  ReactDOM.unmountComponentAtNode(div)
+
+const mockInjectedProps: Props = {
+  quaking: false,
+  distance: 0,
+  quack: () => ({type: '@duck/QUACK'}),
+  swim: (distance)=> ({type:"@duck/SWIM", payload:{distance}})
+}
+describe('App', ()=>{
+
+  it('renders `Learn React`', () => {
+    const { getByText } = render(<App {...mockInjectedProps} />)
+    expect(getByText('Learn React')).toBeInTheDocument()
+  })
 })
