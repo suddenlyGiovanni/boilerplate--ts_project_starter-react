@@ -16,3 +16,5 @@ export const checkIfDuckIsInRange = (state: DucksState): boolean =>
 
 export const checkIfDuckIsQuaking = (state: DucksState): boolean =>
   state.quacking
+
+export const duckDistance = (state: DucksState): number => state.distance

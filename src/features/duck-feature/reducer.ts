@@ -31,7 +31,7 @@ export const duckReducer: Reducer<DucksState, DucksAction> = (
 ) => {
   switch (action.type) {
     case getType(actions.quack): {
-      return { ...state, quacking: true }
+      return { ...state, quacking: !state.quacking }
     }
 
     case getType(actions.swim): {
