@@ -1,5 +1,5 @@
 import { createAction } from 'typesafe-actions'
-
+import types from './types'
 /*
  * ### Actions
  * It's important to be consistent when defining actions, so let's always export functions from
@@ -9,9 +9,9 @@ import { createAction } from 'typesafe-actions'
  * pretty popular.
  */
 
-export const quack = createAction('@duck/QUACK')
+export const quack = createAction(types.QUACK)
 
-export const swim = createAction('@duck/SWIM', action => {
+export const swim = createAction(types.SWIM, action => {
   return (distance: number) => action({ distance })
 })
 
