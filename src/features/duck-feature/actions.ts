@@ -1,4 +1,6 @@
-/**
+import { createAction } from 'typesafe-actions'
+
+/*
  * ### Actions
  * It's important to be consistent when defining actions, so let's always export functions from
  * this file, we don't care if the action needs any input from the outside to build the payload
@@ -7,26 +9,10 @@
  * pretty popular.
  */
 
-import * as types from './types'
+export const quack = createAction('@duck/QUACK')
 
-interface QuackAction {
-  type: typeof types.QUACK
-}
+export const swim = createAction('@duck/SWIM', action => {
+  return (distance: number) => action({ distance })
+})
 
-export function quack(): QuackAction {
-  return { type: types.QUACK }
-}
-
-interface SwimAction {
-  type: typeof types.SWIM
-  payload: number
-}
-
-export function swim(distance: number): SwimAction {
-  return {
-    type: types.SWIM,
-    payload: distance,
-  }
-}
-
-export type DuckActionTypes = QuackAction | SwimAction
+export type DuckActionTypes = ReturnType<typeof quack> | ReturnType<typeof swim>

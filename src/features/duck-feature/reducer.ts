@@ -1,5 +1,6 @@
-import { QUACK, SWIM } from './types'
-import { RootAction } from 'typesafe-actions'
+import { Reducer } from 'redux'
+import { getType, ActionType } from 'typesafe-actions'
+import * as actions from './actions'
 
 /**
  * @description Reducers
@@ -12,28 +13,29 @@ import { RootAction } from 'typesafe-actions'
  * NOTE: Let's keep it simple for now with `switch` statements and abstract later.
  */
 
-export interface DuckStateReducer {
+export type DucksAction = ActionType<typeof actions>
+
+export interface DucksState {
   readonly quacking: boolean
   readonly distance: number
 }
 
-const initialState: DuckStateReducer = {
+const initialState: DucksState = {
   quacking: false,
   distance: 0,
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function reducer(
-  state: DuckStateReducer = initialState,
-  action: RootAction
-) {
+export const duckReducer: Reducer<DucksState, DucksAction> = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
-    case QUACK: {
+    case getType(actions.quack): {
       return { ...state, quacking: true }
     }
 
-    case SWIM: {
-      const distance = action.payload
+    case getType(actions.swim): {
+      const { distance } = action.payload
       return { ...state, distance: state.distance + distance }
     }
 
@@ -43,4 +45,12 @@ export function reducer(
   }
 }
 
-export type DuckState = ReturnType<typeof reducer>
+// export const duckReducer = createReducer<DucksState>(initialState, {
+//   [getType(actions.quack)]: (state, action) => {
+//     state.quacking = !state.quacking
+//   },
+//   [getType(actions.swim)]: (state, action) => {
+//     const { distance } = action.payload
+//     state.distance = state.distance + distance
+//   },
+// })

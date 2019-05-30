@@ -7,8 +7,7 @@
  */
 
 import * as duckActions from './actions'
-import { reducer as duckReducer } from './reducer'
+import { duckReducer } from './reducer'
 import * as duckSelectors from './selectors'
-import * as duckTypes from './types'
 
-export { duckTypes, duckActions, duckSelectors, duckReducer }
+export { duckActions, duckSelectors, duckReducer }
