@@ -19,6 +19,11 @@ module.exports = function(wallaby) {
       '!src/**/*.test.ts?(x)',
       '!src/**/*.spec.ts?(x)',
     ],
+    filesWithNoCoverageCalculated: [
+      'src/serviceWorker.ts',
+      'src/index.tsx',
+      'src/store/*',
+    ],
 
     tests: ['src/**/*.test.ts?(x)', 'src/**/*.spec.ts?(x)'],
 
