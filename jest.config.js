@@ -25,6 +25,7 @@ module.exports = {
     '/src/**/*.{js,jsx,ts,tsx}',
     '!<rootDir>/node_modules/',
     '!/src/serviceWorker.ts',
+    '!/src/test/test-utils.tsx',
     '!/src/index.tsx',
     '!/src/store',
   ],
