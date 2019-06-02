@@ -24,6 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
+    "@testing-library/cypress": "^4.0.1",
     "@testing-library/react": "^8.0.1",
     "@types/jest": "24.0.13",
     "@types/node": "12.0.4",
@@ -33,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "commitizen": "^3.1.1",
+    "cypress": "^3.3.1",
     "cz-conventional-changelog": "^2.1.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-react": "^1.1.7",
@@ -52,6 +54,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "cypress:open": "cypress open",
     "eject": "react-scripts eject",
     "purge-node_modules": "rm -rf node_modules",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
