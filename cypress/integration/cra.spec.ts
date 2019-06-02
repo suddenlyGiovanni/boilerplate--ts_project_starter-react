@@ -16,9 +16,9 @@ describe('CRA', () => {
   })
 
   it('allows the user to navigate navigate to Duck feature', () => {
-    cy.getByText(/duck/i).should('exist')
-
-    cy.getByText(/duck/i).click()
+    cy.getByText(/duck/i)
+      .click()
+      .assertRoute('/duck')
 
     cy.getByText('Feature: Duck').should('exist')
 

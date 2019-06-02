@@ -25,3 +25,7 @@ import '@testing-library/cypress/add-commands'
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('assertRoute', route => {
+  cy.url().should('equal', `${window.location.origin}${route}`)
+})
