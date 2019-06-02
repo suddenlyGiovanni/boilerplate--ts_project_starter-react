@@ -24,7 +24,7 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!<rootDir>/node_modules/'],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: 'coverage',
+  coverageDirectory: './coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: ['/node_modules/'],

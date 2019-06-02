@@ -55,7 +55,7 @@
     "cz": "git-cz",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
