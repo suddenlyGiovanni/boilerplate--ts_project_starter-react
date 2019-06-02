@@ -1,11 +1,12 @@
 import * as React from 'react'
+import { NavLink, Switch, Route } from 'react-router-dom'
+import { RouteChildrenProps } from 'react-router'
 
 import { Header } from 'screens/home/header/Header'
 import { Main } from 'screens/home/main/Main'
 import { ConnectedDuck } from 'components/duck'
-import { NavLink, Switch, Route } from 'react-router-dom'
 
-export const Home: React.FC = () => {
+export const Home: React.FC<RouteChildrenProps> = () => {
   return (
     <div
       style={{
