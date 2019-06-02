@@ -1,5 +1,4 @@
 {
-  "editor.formatOnSave": true,
   "[javascript]": {
     "editor.formatOnSave": false
   },
@@ -69,5 +68,9 @@
       "color": "#000000",
       "strikethrough": false
     }
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "prettier.eslintIntegration": true,
+  "prettier.requireConfig": true,
+  "prettier.singleQuote": true
 }

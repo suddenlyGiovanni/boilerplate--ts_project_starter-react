@@ -1,12 +1,12 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import 'styles/index.css'
 
 import { store } from 'store'
-import { AppConnected } from 'components/app/AppConnected'
+import { Home } from 'screens/home/Home'
 import * as serviceWorker from './serviceWorker'
 
 const rootElement = document.getElementById('root')
@@ -14,7 +14,10 @@ const rootElement = document.getElementById('root')
 const Root: React.FC = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <AppConnected />
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route component={Home} />
+      </Switch>
     </BrowserRouter>
   </Provider>
 )

@@ -1,11 +1,12 @@
-import { App } from './App'
 import { connect } from 'react-redux'
 import { RootState } from 'typesafe-actions'
+
 import { duckSelectors, duckActions } from 'features/duck-feature'
+import { Duck } from './Duck'
 
 function mapStateToProps(state: RootState) {
   return {
-    quaking: duckSelectors.checkIfDuckIsQuaking(state),
+    quacking: duckSelectors.checkIfDuckIsQuaking(state),
     distance: duckSelectors.duckDistance(state),
   }
 }
@@ -15,10 +16,10 @@ const mapDispatchToProps = {
   swim: duckActions.swim,
 }
 
-export const AppConnected = connect(
+export const ConnectedDuck = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Duck)
 
-export type ConnectedProps = ReturnType<typeof mapStateToProps> &
+export type DuckProps = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps
