@@ -5,7 +5,7 @@ import { createMemoryHistory } from 'history'
 
 const renderWithRouter = (
   ui: React.ReactElement<any>,
-  options: (Omit<RenderOptions, 'queries'>) & { route: string }
+  options?: (Omit<RenderOptions, 'queries'>) & { route: string }
 ) => {
   const { route, ...renderOptions } = options || { route: '/' }
   const history = createMemoryHistory({ initialEntries: [route] })
