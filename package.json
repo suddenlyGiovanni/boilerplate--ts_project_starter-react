@@ -57,6 +57,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "cy:run": "cypress run",
     "cy:open": "cypress open",
     "eject": "react-scripts eject",
     "purge-node_modules": "rm -rf node_modules",

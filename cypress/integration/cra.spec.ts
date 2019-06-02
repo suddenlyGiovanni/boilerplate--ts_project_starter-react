@@ -1,8 +1,11 @@
 describe('CRA', () => {
   it('shows learn link', () => {
+    const learReactLink = 'Learn React'
+
     cy.visit('http://localhost:3000')
-    cy.get('.App-link')
+
+    cy.getByText(learReactLink)
       .should('be.visible')
-      .and('have.text', 'Learn React')
+      .and('have.text', learReactLink)
   })
 })
