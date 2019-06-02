@@ -22,6 +22,7 @@
     "typesafe-actions": "^4.4.0"
   },
   "devDependencies": {
+    "@bahmutov/add-typescript-to-cypress": "^2.1.1",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@testing-library/cypress": "^4.0.1",
@@ -47,7 +48,8 @@
     "prettier": "^1.17.1",
     "source-map-explorer": "^1.8.0",
     "standard-version": "^6.0.1",
-    "typescript": "3.5.1"
+    "typescript": "3.5.1",
+    "webpack": "^4.32.2"
   },
   "scripts": {
     "cz": "git-cz",
@@ -55,7 +57,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
-    "cypress:open": "cypress open",
+    "cy:open": "cypress open",
     "eject": "react-scripts eject",
     "purge-node_modules": "rm -rf node_modules",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
