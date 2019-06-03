@@ -14,6 +14,7 @@ function mapStateToProps(state: RootState) {
 const mapDispatchToProps = {
   quack: duckActions.quack,
   swim: duckActions.swim,
+  fetchDucks: duckActions.fetchDucks,
 }
 
 export const ConnectedDuck = connect(

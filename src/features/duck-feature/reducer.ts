@@ -1,6 +1,6 @@
 import { Reducer } from 'redux'
 import { getType, ActionType } from 'typesafe-actions'
-import * as actions from './actions'
+import * as duckActions from './actions'
 
 /**
  * @description Reducers
@@ -13,12 +13,13 @@ import * as actions from './actions'
  * NOTE: Let's keep it simple for now with `switch` statements and abstract later.
  */
 
-export type DucksAction = ActionType<typeof actions>
+export type DucksAction = ActionType<typeof duckActions>
 
-export interface DucksState {
-  readonly quacking: boolean
-  readonly distance: number
-}
+export type DucksState = Readonly<{
+  quacking: boolean
+  distance: number
+  response?: string
+}>
 
 const initialState: DucksState = {
   quacking: false,
@@ -30,13 +31,17 @@ export const duckReducer: Reducer<DucksState, DucksAction> = (
   action
 ) => {
   switch (action.type) {
-    case getType(actions.quack): {
+    case getType(duckActions.quack): {
       return { ...state, quacking: !state.quacking }
     }
 
-    case getType(actions.swim): {
+    case getType(duckActions.swim): {
       const { distance } = action.payload
       return { ...state, distance: state.distance + distance }
+    }
+
+    case getType(duckActions.setDucks): {
+      return { ...state, ...action.payload }
     }
 
     default: {

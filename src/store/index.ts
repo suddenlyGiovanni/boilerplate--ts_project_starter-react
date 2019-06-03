@@ -1,18 +1,11 @@
-import { configureStore, getDefaultMiddleware } from 'redux-starter-kit'
+import { configureStore } from 'redux-starter-kit'
 import { RootAction, RootState } from 'typesafe-actions'
-import logger from 'redux-logger'
 
 import { rootReducer } from './root-reducer'
-import { apiMiddleware } from './api-middleware'
 
+import rootMiddleware from './root-middleware'
 // rehydrate state on app start
 const initialState = {}
-
-const middleware = [...getDefaultMiddleware(), apiMiddleware]
-
-if (process.env.NODE_ENV === 'development') {
-  middleware.push(logger)
-}
 
 // create store
 export const store = configureStore<RootState, RootAction>({
@@ -22,7 +15,7 @@ export const store = configureStore<RootState, RootAction>({
    */
   reducer: rootReducer,
   /** An array of Redux middlewares.  If not supplied, uses getDefaultMiddleware() */
-  middleware,
+  middleware: rootMiddleware,
 
   /** Enable support for the Redux DevTools Extension. Defaults to true. */
   devTools: true,

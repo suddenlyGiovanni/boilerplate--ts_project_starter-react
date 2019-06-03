@@ -6,6 +6,7 @@ export const Duck: React.FC<DuckProps> = ({
   distance,
   quack,
   swim,
+  fetchDucks,
 }) => (
   <div>
     <h3>Feature: Duck</h3>
@@ -16,6 +17,9 @@ export const Duck: React.FC<DuckProps> = ({
     <p>
       swimming distance: {distance}
       <button onClick={() => swim(100)}>add 100</button>
+    </p>
+    <p>
+      <button onClick={fetchDucks}>Fetch ducks</button>
     </p>
   </div>
 )

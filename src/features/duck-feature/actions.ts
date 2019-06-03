@@ -1,8 +1,6 @@
-/* eslint-disable no-console */
 import { createAction } from 'typesafe-actions'
 
 import duckTypes from './types'
-import { apiActionFactory } from 'store/api/api-utils'
 
 /*
  * ### Actions
@@ -19,18 +17,8 @@ export const swim = createAction(duckTypes.SWIM, action => {
   return (distance: number) => action({ distance })
 })
 
-export function fetchDucks() {
-  return apiActionFactory({
-    baseURL: 'https://4cacf9e9-faef-4017-a283-0fe1fb2974c4.mock.pstmn.io/',
-    url: '/get',
-    method: 'GET',
-    onSuccess: data => console.log('success: ', data),
-    onFailure: error => console.log('Error occurred loading ducks: ', error),
-    label: duckTypes.FETCH_DUCKS,
-  })
-}
+export const fetchDucks = createAction(duckTypes.FETCH_DUCKS)
 
-export type DuckActionTypes =
-  | ReturnType<typeof quack>
-  | ReturnType<typeof swim>
-  | ReturnType<typeof fetchDucks>
+export const setDucks = createAction(duckTypes.SET_DUCKS, action => {
+  return ({ data }: { data: { response: string } }) => action(data)
+})
