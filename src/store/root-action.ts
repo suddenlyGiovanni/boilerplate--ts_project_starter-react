@@ -1,5 +1,5 @@
-import * as duckActions from 'features/duck-feature/actions'
-import * as apiActions from 'features/api/actions'
+import { duckActions } from 'features/duck'
+import { apiActions } from 'features/api'
 
 export const rootAction = {
   duck: duckActions,

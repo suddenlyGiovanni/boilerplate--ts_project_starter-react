@@ -1,8 +1,8 @@
 import { getDefaultMiddleware } from 'redux-starter-kit'
 
 import { actionSplitter } from './action-splitter-middleware'
-import { apiMiddleware } from 'features/api/middleware'
-import { duckMiddleware } from 'features/duck-feature'
+import { apiMiddleware } from 'features/api'
+import { duckMiddleware } from 'features/duck'
 
 const rootMiddleware = [
   ...getDefaultMiddleware(),

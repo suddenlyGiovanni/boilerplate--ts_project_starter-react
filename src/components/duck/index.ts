@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { RootState } from 'typesafe-actions'
 
-import { duckSelectors, duckActions } from 'features/duck-feature'
+import { duckSelectors, duckActions } from 'features/duck'
 import { Duck } from './Duck'
 
 function mapStateToProps(state: RootState) {
