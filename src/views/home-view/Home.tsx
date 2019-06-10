@@ -2,8 +2,8 @@ import * as React from 'react'
 import { NavLink, Switch, Route } from 'react-router-dom'
 import { RouteChildrenProps } from 'react-router'
 
-import { Header } from 'screens/home/header/Header'
-import { Main } from 'screens/home/main/Main'
+import { Header } from 'views/home-view/header/Header'
+import { Main } from 'views/home-view/main/Main'
 import { ConnectedDuck } from 'components/duck'
 
 export const Home: React.FC<RouteChildrenProps> = () => {
