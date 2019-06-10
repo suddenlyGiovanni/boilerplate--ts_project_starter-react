@@ -1,17 +1,14 @@
 import * as React from 'react'
+import css from '@emotion/css/macro'
 
-export const Main: React.FC = ({ children }) => {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '100%',
-        width: '100%',
-      }}
-    >
-      {children}
-    </div>
-  )
-}
+const mainStyle = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+`
+
+export const Main: React.FC = ({ children }) => (
+  <div css={mainStyle}>{children}</div>
+)
