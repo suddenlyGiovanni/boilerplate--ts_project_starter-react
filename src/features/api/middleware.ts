@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import { Middleware, Dispatch } from 'redux'
 import { RootState, RootAction } from 'typesafe-actions'
 
@@ -7,7 +7,7 @@ import * as apiActions from './actions'
 
 export const apiMiddleware: Middleware<{}, RootState, Dispatch<RootAction>> = ({
   dispatch,
-}) => next => action => {
+}) => next => async action => {
   next(action)
 
   if (action.type === apiActionTypes.API_REQUEST) {
@@ -23,32 +23,30 @@ export const apiMiddleware: Middleware<{}, RootState, Dispatch<RootAction>> = ({
 
     dispatch(apiActions.apiStart({ feature, cuid, timestamp: Date.now() }))
 
-    axios
-      .request({
+    try {
+      const response = await axios.request({
         url,
         method,
         headers,
         [dataOrParams]: data,
         ...rest,
       })
-      .then(({ data }) => {
-        dispatch(apiActions.apiSuccess({ data, feature, cuid }))
-      })
-      .catch((error: AxiosError) => {
-        dispatch(apiActions.apiError({ error, feature, cuid }))
 
-        if (error.response && error.response.status === 403) {
-          dispatch(
-            apiActions.accessDenied({
-              pathname: window.location.pathname,
-              feature,
-              cuid,
-            })
-          )
-        }
-      })
-      .finally(() => {
-        dispatch(apiActions.apiEnd({ feature, cuid, timestamp: Date.now() }))
-      })
+      dispatch(apiActions.apiSuccess({ data: response.data, feature, cuid }))
+    } catch (error) {
+      dispatch(apiActions.apiError({ error, feature, cuid }))
+
+      if (error.response && error.response.status === 403) {
+        dispatch(
+          apiActions.accessDenied({
+            pathname: window.location.pathname,
+            feature,
+            cuid,
+          })
+        )
+      }
+    } finally {
+      dispatch(apiActions.apiEnd({ feature, cuid, timestamp: Date.now() }))
+    }
   }
 }
