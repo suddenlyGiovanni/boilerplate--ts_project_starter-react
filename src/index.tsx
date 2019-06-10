@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'styles/index.css'
 
 import { store } from 'store'
-import { Home } from 'screens/home/Home'
+import { Home } from 'views/home-view/Home'
 import * as serviceWorker from './serviceWorker'
 
 const rootElement = document.getElementById('root')

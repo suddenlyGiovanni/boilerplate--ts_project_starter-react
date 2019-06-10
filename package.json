@@ -1,6 +1,6 @@
 {
   "name": "boilerplate--ts_project_starter-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "My highly opinionated starting point for a CRA TypeScript project",
   "repository": {
     "type": "git",
@@ -13,6 +13,8 @@
   },
   "homepage": "https://github.com/suddenlyGiovanni/boilerplate--ts_project_starter-react#readme",
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.12",
     "@types/redux-logger": "^3.0.7",
     "axios": "^0.19.0",
     "cuid": "^2.1.6",
@@ -50,11 +52,13 @@
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^2.4.0",
     "jest-dom": "^3.5.0",
+    "jest-emotion": "^10.0.11",
     "lint-staged": "^8.2.0",
     "prettier": "^1.18.2",
     "source-map-explorer": "^2.0.0",
     "standard-version": "^6.0.1",
-    "typescript": "3.5.1",
+    "typescript": "^3.5.1",
+    "typescript-styled-plugin": "^0.14.0",
     "webpack": "^4.33.0"
   },
   "scripts": {
