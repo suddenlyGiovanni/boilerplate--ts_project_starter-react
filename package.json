@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
-    "@commitlint/cli": "^8.0.0",
+    "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@testing-library/cypress": "^4.0.3",
     "@testing-library/react": "^8.0.1",
