@@ -70,7 +70,6 @@
     }
   ],
   "editor.formatOnSave": true,
-  "prettier.eslintIntegration": true,
   "prettier.requireConfig": true,
   "prettier.singleQuote": true
 }
