@@ -7,9 +7,10 @@
  */
 
 import * as duckActions from './actions'
+import { useDuckDispatch, useDuckState } from './binder'
+import { duckMiddleware } from './middleware'
 import { duckReducer } from './reducer'
 import * as duckSelectors from './selectors'
 import duckTypes from './types'
-import { duckMiddleware } from './middleware'
 
-export { duckTypes, duckActions, duckSelectors, duckReducer, duckMiddleware }
+export { duckTypes, duckActions, duckSelectors, duckReducer, duckMiddleware, useDuckDispatch, useDuckState, }

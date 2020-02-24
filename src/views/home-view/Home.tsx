@@ -1,11 +1,13 @@
-import * as React from 'react'
-import { NavLink, Switch, Route } from 'react-router-dom'
-import { RouteChildrenProps } from 'react-router'
 import styled from '@emotion/styled/macro'
-
+import { Duck } from "components/duck/Duck"
+import React from 'react'
+import { RouteChildrenProps } from 'react-router'
+import { NavLink, Route, Switch } from 'react-router-dom'
 import { Header } from 'views/home-view/header/Header'
 import { Main } from 'views/home-view/main/Main'
-import { ConnectedDuck } from 'components/duck'
+
+
+
 
 const HomeWrapper = styled.div`
   display: flex;
@@ -45,7 +47,7 @@ export const Home: React.FC<RouteChildrenProps> = () => {
           </ListElement>
         </ElementContainer>
         <Switch>
-          <Route path="/duck" component={ConnectedDuck} />
+          <Route path="/duck" component={Duck} />
         </Switch>
       </Main>
     </HomeWrapper>
