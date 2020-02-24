@@ -1,13 +1,12 @@
 import styled from '@emotion/styled/macro'
-import { Duck } from "components/duck/Duck"
+
 import React from 'react'
 import { RouteChildrenProps } from 'react-router'
 import { NavLink, Route, Switch } from 'react-router-dom'
-import { Header } from 'views/home-view/header/Header'
-import { Main } from 'views/home-view/main/Main'
 
-
-
+import { Duck } from 'components/duck/duck'
+import { Header } from 'views/home-view/header/header'
+import { Main } from 'views/home-view/main/main'
 
 const HomeWrapper = styled.div`
   display: flex;
@@ -32,22 +31,22 @@ const ListElement = styled.li`
   margin: 10px 10px;
 `
 
-export const Home: React.FC<RouteChildrenProps> = () => {
+export function Home(props: RouteChildrenProps): JSX.Element {
   return (
     <HomeWrapper>
       <Header />
       <Main>
         <ElementContainer>
           <ListElement>
-            <NavLink to="/duck">Duck</NavLink>
+            <NavLink to="/duck">{'Duck'}</NavLink>
           </ListElement>
 
           <ListElement>
-            <NavLink to="/other">Other</NavLink>
+            <NavLink to="/other">{'Other'}</NavLink>
           </ListElement>
         </ElementContainer>
         <Switch>
-          <Route path="/duck" component={Duck} />
+          <Route component={Duck} path="/duck" />
         </Switch>
       </Main>
     </HomeWrapper>

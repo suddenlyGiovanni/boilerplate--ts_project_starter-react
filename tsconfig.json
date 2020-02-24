@@ -4,7 +4,6 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -15,7 +14,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es5",
-    "plugins": [{ "name": "typescript-styled-plugin" }]
+    "plugins": [{ "name": "typescript-styled-plugin" }],
+    "pretty": true
   },
   "include": ["src"]
 }

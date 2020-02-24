@@ -9,6 +9,6 @@ const mainStyle = css`
   width: 100%;
 `
 
-export const Main: React.FC = ({ children }) => (
-  <div css={mainStyle}>{children}</div>
-)
+export const Main: React.FC = ({ children }) => {
+  return <div css={mainStyle}>{children}</div>
+}

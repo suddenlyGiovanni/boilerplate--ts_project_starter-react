@@ -13,4 +13,12 @@ import { duckReducer } from './reducer'
 import * as duckSelectors from './selectors'
 import duckTypes from './types'
 
-export { duckTypes, duckActions, duckSelectors, duckReducer, duckMiddleware, useDuckDispatch, useDuckState, }
+export {
+  duckTypes,
+  duckActions,
+  duckSelectors,
+  duckReducer,
+  duckMiddleware,
+  useDuckDispatch,
+  useDuckState,
+}

@@ -1,11 +1,13 @@
+import { RootState } from 'typesafe-actions'
+
+import { DucksState } from './reducer'
+
 import {
   duckActions as actions,
   duckReducer as reducer,
   duckTypes as types,
   duckSelectors as selectors,
 } from '.'
-import { DucksState } from './reducer'
-import { RootState } from 'typesafe-actions'
 
 /**
  * FIXTURES

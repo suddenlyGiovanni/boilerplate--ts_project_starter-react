@@ -1,6 +1,6 @@
-import * as React from 'react'
-import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
+import styled from '@emotion/styled'
+import React from 'react'
 
 import logo from 'assets/logo.svg'
 
@@ -54,20 +54,24 @@ const EditCopy = styled.p`
   }
 `
 
-export const Header: React.FC = () => (
-  <HeaderWrapper>
-    <HeaderContainer>
-      <Logo src={logo} alt="logo" />
-      <EditCopy>
-        Edit <code>src/views/home-view/home</code> and save to reload.
-      </EditCopy>
-      <Link
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </Link>
-    </HeaderContainer>
-  </HeaderWrapper>
-)
+export function Header(): JSX.Element {
+  return (
+    <HeaderWrapper>
+      <HeaderContainer>
+        <Logo alt="logo" src={logo} />
+        <EditCopy>
+          {'Edit '}
+          <code>{'src/views/home-view/home'}</code>
+          {' and save to reload.'}
+        </EditCopy>
+        <Link
+          href="https://reactjs.org"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {'Learn React'}
+        </Link>
+      </HeaderContainer>
+    </HeaderWrapper>
+  )
+}

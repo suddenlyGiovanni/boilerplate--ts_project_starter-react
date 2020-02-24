@@ -1,8 +1,7 @@
-import { duckActions, duckSelectors } from 'features/duck'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-
+import { duckActions, duckSelectors } from 'features/duck'
 
 export function useDuckState(): { quacking: boolean; distance: number } {
   const quacking: boolean = useSelector(duckSelectors.checkIfDuckIsQuaking)

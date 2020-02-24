@@ -1,9 +1,9 @@
 import { configureStore } from 'redux-starter-kit'
 import { RootAction, RootState } from 'typesafe-actions'
 
+import rootMiddleware from './root-middleware'
 import { rootReducer } from './root-reducer'
 
-import rootMiddleware from './root-middleware'
 // rehydrate state on app start
 const initialState = {}
 
