@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Middleware, Dispatch } from 'redux'
 import { RootState, RootAction, getType } from 'typesafe-actions'
 
@@ -10,7 +10,7 @@ export const duckMiddleware: Middleware<
   {},
   RootState,
   Dispatch<RootAction>
-> = () => next => action => {
+> = () => next => (action: any): any => {
   next(action)
 
   if (action.type === getType(duckActions.fetchDucks)) {

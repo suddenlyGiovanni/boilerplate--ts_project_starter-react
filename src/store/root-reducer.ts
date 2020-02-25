@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux-starter-kit'
+import { combineReducers } from '@reduxjs/toolkit'
 
 import { apiReducer } from 'features/api'
 import { duckReducer } from 'features/duck'
@@ -8,3 +8,5 @@ export const rootReducer = combineReducers({
   api: apiReducer,
   // ...
 })
+
+export type RootState = ReturnType<typeof rootReducer>
