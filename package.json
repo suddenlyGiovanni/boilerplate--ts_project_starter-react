@@ -62,7 +62,7 @@
     "husky": "4.2.3",
     "jest-dom": "3.5.0",
     "jest-emotion": "10.0.27",
-    "lint-staged": "10.0.7",
+    "lint-staged": "10.0.8",
     "prettier": "1.19.1",
     "source-map-explorer": "2.3.1",
     "standard-version": "7.1.0",
@@ -83,9 +83,9 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
-    "prettier:base": "prettier --parser typescript --single-quote",
-    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
-    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
+    "format:base": "prettier --parser typescript --single-quote",
+    "format:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
+    "format:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
     "release": "standard-version",
     "postrelease": "git push --follow-tags origin master"
   },
@@ -103,7 +103,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "npm run prettier:write",
+      "npm run format:write",
       "git add"
     ]
   },
