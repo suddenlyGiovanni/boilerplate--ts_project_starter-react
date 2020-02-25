@@ -1,94 +1,79 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as axios from 'axios'
 import { AxiosError } from 'axios'
 import cuid from 'cuid'
 
-import { createAction } from 'typesafe-actions'
+import { createAction, createAsyncAction } from 'typesafe-actions'
 
 import apiTypes from './types'
 
-export const apiStart = createAction(apiTypes.API_START, action => {
-  return ({
-    feature,
-    timestamp,
-    cuid,
-  }: {
-    feature: string
-    cuid: string
-    timestamp: number
-  }) => {
-    return action({ timestamp }, { cuid, feature })
-  }
-})
+interface Temp1 {
+  feature: string
+  cuid: string
+  timestamp: number
+}
+export const apiStart = createAction(
+  apiTypes.API_START,
+  ({ timestamp }: Temp1) => ({ timestamp }),
+  ({ feature, cuid }: Temp1) => ({ cuid, feature })
+)()
 
-export const apiEnd = createAction(apiTypes.API_END, action => {
-  return ({
-    feature,
-    timestamp,
-    cuid,
-  }: {
-    feature: string
-    cuid: string
-    timestamp: number
-  }) => {
-    return action({ timestamp }, { cuid, feature })
-  }
-})
+export const apiEnd = createAction(
+  apiTypes.API_END,
+  ({ timestamp }: Temp1) => ({ timestamp }),
+  ({ feature, cuid }: Temp1) => ({ cuid, feature })
+)()
 
-export const accessDenied = createAction(apiTypes.ACCESS_DENIED, action => {
-  return ({
-    pathname,
-    feature,
-    cuid,
-  }: {
-    pathname: string
-    feature: string
-    cuid: string
-  }) => action({ pathname }, { cuid, feature })
-})
+interface Temp2 {
+  pathname: string
+  feature: string
+  cuid: string
+}
+export const accessDenied = createAction(
+  apiTypes.ACCESS_DENIED,
+
+  ({ pathname }: Temp2) => ({ pathname }),
+  ({ feature, cuid }: Temp2) => ({ cuid, feature })
+)()
 
 interface ApiActionFactory extends axios.AxiosRequestConfig {
   feature: string
   accessToken?: null | string
 }
 
-export const apiRequest = createAction(apiTypes.API_REQUEST, action => {
-  return ({
-    url = '',
-    method = 'GET',
-    data = null,
-    feature = '',
-    accessToken = null,
-    ...rest
-  }: ApiActionFactory) => {
-    return action(
-      { url, method, data, accessToken, ...rest },
-      { cuid: cuid(), feature }
-    )
-  }
-})
+interface Temp3<T = {}> {
+  feature: string
+  data: T
+  cuid: string
+}
 
-export const apiSuccess = createAction(apiTypes.API_SUCCESS, action => {
-  return function<T = {}>({
-    feature,
-    data,
-    cuid,
-  }: {
-    feature: string
-    data: T
-    cuid: string
-  }) {
-    return action({ data }, { cuid, feature })
-  }
-})
+interface Temp4 {
+  feature: string
+  error: AxiosError
+  cuid: string
+}
 
-export const apiError = createAction(apiTypes.API_ERROR, action => {
-  return ({
-    feature,
-    error,
-    cuid,
-  }: {
-    feature: string
-    error: AxiosError
-    cuid: string
-  }) => action({ error }, { cuid, feature })
-})
+export const api = createAsyncAction(
+  [
+    apiTypes.API_REQUEST,
+    ({
+      url = '',
+      method = 'GET',
+      data = null,
+      feature = '',
+      accessToken = null,
+      ...rest
+    }: ApiActionFactory) => ({ url, method, data, accessToken, ...rest }),
+    ({ feature = '' }: ApiActionFactory) => ({ cuid: cuid(), feature }),
+  ],
+  [
+    apiTypes.API_SUCCESS,
+    <T = {}>({ data }: Temp3<T>) => ({ data }),
+    <T = {}>({ feature, cuid }: Temp3<T>) => ({ cuid, feature }),
+  ],
+  [
+    apiTypes.API_ERROR,
+    ({ error }: Temp4) => ({ error }),
+    ({ feature, cuid }: Temp4) => ({ cuid, feature }),
+  ]
+)()

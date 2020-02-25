@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios from 'axios'
 import { Middleware, Dispatch } from 'redux'
 import { RootState, RootAction } from 'typesafe-actions'
@@ -32,9 +33,9 @@ export const apiMiddleware: Middleware<{}, RootState, Dispatch<RootAction>> = ({
         ...rest,
       })
 
-      dispatch(apiActions.apiSuccess({ data: response.data, feature, cuid }))
+      dispatch(apiActions.api.success({ data: response.data, feature, cuid }))
     } catch (error) {
-      dispatch(apiActions.apiError({ error, feature, cuid }))
+      dispatch(apiActions.api.failure({ error, feature, cuid }))
 
       if (error.response && error.response.status === 403) {
         dispatch(
