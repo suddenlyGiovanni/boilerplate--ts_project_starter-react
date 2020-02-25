@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "incremental": true,
+    // "incremental": true,
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
