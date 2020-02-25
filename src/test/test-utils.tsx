@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Router } from 'react-router-dom'
 import { render, wait, RenderOptions } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
+import React from 'react'
+import { Router } from 'react-router-dom'
 
 const renderWithRouter = (
   ui: React.ReactElement<any>,
-  options?: (Omit<RenderOptions, 'queries'>) & { route: string }
+  options?: Omit<RenderOptions, 'queries'> & { route: string }
 ) => {
   const { route, ...renderOptions } = options || { route: '/' }
   const history = createMemoryHistory({ initialEntries: [route] })

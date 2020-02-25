@@ -1,5 +1,6 @@
 import { Reducer } from 'redux'
 import { getType, ActionType } from 'typesafe-actions'
+
 import * as duckActions from './actions'
 
 /**

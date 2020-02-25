@@ -2,8 +2,8 @@ import axios from 'axios'
 import { Middleware, Dispatch } from 'redux'
 import { RootState, RootAction } from 'typesafe-actions'
 
-import apiActionTypes from './types'
 import * as apiActions from './actions'
+import apiActionTypes from './types'
 
 export const apiMiddleware: Middleware<{}, RootState, Dispatch<RootAction>> = ({
   dispatch,

@@ -2,6 +2,7 @@ import { Middleware, Dispatch } from 'redux'
 import { RootState, RootAction, getType } from 'typesafe-actions'
 
 import * as duckActions from './actions'
+
 import { apiActions } from 'features/api'
 
 export const duckMiddleware: Middleware<
@@ -22,9 +23,11 @@ export const duckMiddleware: Middleware<
     )
   }
 
-  if (action.meta && action.meta.feature === getType(duckActions.fetchDucks)) {
-    if (action.type === getType(apiActions.apiSuccess)) {
-      next(duckActions.setDucks(action.payload))
-    }
+  if (
+    action.meta &&
+    action.meta.feature === getType(duckActions.fetchDucks) &&
+    action.type === getType(apiActions.apiSuccess)
+  ) {
+    next(duckActions.setDucks(action.payload))
   }
 }

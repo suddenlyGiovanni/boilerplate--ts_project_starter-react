@@ -1,10 +1,10 @@
 import * as axios from 'axios'
+import { AxiosError } from 'axios'
 import cuid from 'cuid'
 
 import { createAction } from 'typesafe-actions'
-import apiTypes from './types'
 
-import { AxiosError } from 'axios'
+import apiTypes from './types'
 
 export const apiStart = createAction(apiTypes.API_START, action => {
   return ({
