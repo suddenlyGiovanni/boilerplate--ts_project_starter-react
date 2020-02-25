@@ -1,9 +1,11 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { ActionType } from 'typesafe-actions'
 
 import { duckActions, duckSelectors } from 'features/duck'
 
-export function useDuckState(): { quacking: boolean; distance: number } {
+type DuckState = { quacking: boolean; distance: number }
+export function useDuckState(): DuckState {
   const quacking: boolean = useSelector(duckSelectors.checkIfDuckIsQuaking)
   const distance: number = useSelector(duckSelectors.duckDistance)
   return {
@@ -12,7 +14,12 @@ export function useDuckState(): { quacking: boolean; distance: number } {
   }
 }
 
-export function useDuckDispatch() {
+type DuckDispatcher = {
+  quack: () => ActionType<typeof duckActions.quack>
+  swim: (distance: number) => ActionType<typeof duckActions.swim>
+  fetchDucks: () => ActionType<typeof duckActions.fetchDucks>
+}
+export function useDuckDispatch(): DuckDispatcher {
   const dispatch = useDispatch()
   const quack = useCallback(() => {
     return dispatch(duckActions.quack())

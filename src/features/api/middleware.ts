@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
-import { Middleware, Dispatch } from 'redux'
+import { Middleware, Dispatch, AnyAction } from 'redux'
 import { RootState, RootAction } from 'typesafe-actions'
 
 import * as apiActions from './actions'
@@ -8,7 +8,7 @@ import apiActionTypes from './types'
 
 export const apiMiddleware: Middleware<{}, RootState, Dispatch<RootAction>> = ({
   dispatch,
-}) => next => async action => {
+}) => next => async (action: AnyAction): Promise<any> => {
   next(action)
 
   if (action.type === apiActionTypes.API_REQUEST) {
