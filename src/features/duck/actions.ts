@@ -11,14 +11,19 @@ import duckTypes from './types'
  * pretty popular.
  */
 
-export const quack = createAction(duckTypes.QUACK)
+export const quack = createAction(duckTypes.QUACK)()
 
-export const swim = createAction(duckTypes.SWIM, action => {
-  return (distance: number) => action({ distance })
-})
+export const swim = createAction(duckTypes.SWIM, (distance: number) => ({
+  distance,
+}))()
 
-export const fetchDucks = createAction(duckTypes.FETCH_DUCKS)
+export const fetchDucks = createAction(duckTypes.FETCH_DUCKS)()
 
-export const setDucks = createAction(duckTypes.SET_DUCKS, action => {
-  return ({ data }: { data: { response: string } }) => action(data)
-})
+interface DuckData {
+  data: { response: string }
+}
+
+export const setDucks = createAction(
+  duckTypes.SET_DUCKS,
+  ({ data }: DuckData) => data
+)()
