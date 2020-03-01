@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import * as axios from 'axios'
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosRequestConfig } from 'axios'
 import cuid from 'cuid'
 
 import { createAction, createAsyncAction } from 'typesafe-actions'
@@ -36,7 +35,7 @@ export const accessDenied = createAction(
   ({ feature, cuid }: Temp2) => ({ cuid, feature })
 )()
 
-interface ApiActionFactory extends axios.AxiosRequestConfig {
+interface ApiActionFactory extends AxiosRequestConfig {
   feature: string
   accessToken?: null | string
 }
