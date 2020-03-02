@@ -1,14 +1,7 @@
-import css from '@emotion/css/macro'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-const mainStyle = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-`
+import { mainStyle } from './main.styles'
 
-export const Main: React.FC = ({ children }) => {
-  return <div css={mainStyle}>{children}</div>
+export function Main({ children }: { children: ReactNode }): JSX.Element {
+  return <div className={mainStyle}>{children}</div>
 }

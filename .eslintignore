@@ -1,5 +1,5 @@
 commitlint.config.js
-serviceWorker.js
+serviceWorker.ts
 wallaby.js
 ./cypress/tsconfig.json
 node_modules

@@ -5,7 +5,7 @@ import * as actions from './actions'
 
 export type ApiAction = ActionType<typeof actions>
 
-export type ApiState = any[]
+export type ApiState = unknown[]
 
 const initialState: ApiState = []
 
