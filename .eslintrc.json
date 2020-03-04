@@ -51,6 +51,7 @@
         "ecmaFeatures": {
           "jsx": true
         },
+        "project": "./tsconfig.json",
 
         // typescript-eslint specific options
         "warnOnUnsupportedTypeScriptVersion": true
@@ -103,13 +104,23 @@
     }
   ],
   "extends": [
-    "eslint:recommended",
+    "eslint:all",
     "react-app",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/strict"
+    "plugin:jsx-a11y/strict",
+    "plugin:prettier/recommended"
   ],
 
   "rules": {
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
     "import/order": [
       "error",
       {
