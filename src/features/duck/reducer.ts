@@ -1,4 +1,3 @@
-/* eslint-disable default-param-last */
 /**
  * @description Reducers
  * It's a good practice to keep your **state shape** in a comment above the reducers, just to have
@@ -29,6 +28,7 @@ const initialState: DucksState = {
 }
 
 export const duckReducer: Reducer<DucksState, DucksAction> = (
+  // eslint-disable-next-line default-param-last
   state = initialState,
   action
 ) => {

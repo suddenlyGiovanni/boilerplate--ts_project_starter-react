@@ -11,6 +11,7 @@
  */
 
 import { RootState } from 'typesafe-actions'
+
 const BASE_DISTANCE = 1000
 
 export const checkIfDuckIsInRange = (state: RootState): boolean =>

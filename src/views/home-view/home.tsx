@@ -1,6 +1,5 @@
 import React from 'react'
-import { RouteChildrenProps } from 'react-router'
-import { NavLink, Route, Switch } from 'react-router-dom'
+import { NavLink, Route, RouteChildrenProps, Switch } from 'react-router-dom'
 
 import { elementContainer, homeWrapper, listElement } from './home.styles'
 
@@ -8,6 +7,7 @@ import { Duck } from 'components/duck/duck'
 import { Header } from 'views/home-view/header/header'
 import { Main } from 'views/home-view/main/main'
 
+// eslint-disable-next-line no-unused-vars
 export function Home(props: RouteChildrenProps): JSX.Element {
   return (
     <div className={homeWrapper}>

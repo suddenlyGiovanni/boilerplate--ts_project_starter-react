@@ -1,4 +1,5 @@
 import { css } from 'emotion/macro'
+
 export const mainStyle = css`
   display: flex;
   flex-direction: column;

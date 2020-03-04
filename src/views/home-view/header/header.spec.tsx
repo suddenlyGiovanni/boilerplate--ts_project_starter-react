@@ -3,8 +3,9 @@ import React from 'react'
 
 import { Header } from './header'
 
-describe('App', () => {
+describe('app', () => {
   it('renders `Learn React`', () => {
+    expect.assertions(1)
     const { getByText } = render(<Header />)
     expect(getByText('Learn React')).toBeInTheDocument()
   })

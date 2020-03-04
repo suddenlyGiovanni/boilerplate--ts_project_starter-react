@@ -6,31 +6,49 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 
 import { store } from 'store'
+import { isDevelopment } from 'utils/is-development'
 import { Home } from 'views/home-view/home'
 
 import 'styles/index.css'
 
-const rootElement = document.getElementById('root')
+const rootElement = document.querySelector('#root')
 
 function Root(): JSX.Element {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Switch>
-          <Route component={Home} path="/" />
-          <Route component={Home} />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
+    <StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Switch>
+            <Route component={Home} path="/" />
+            <Route component={Home} />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
+    </StrictMode>
   )
 }
 
-ReactDOM.render(
-  <StrictMode>
-    <Root />
-  </StrictMode>,
-  rootElement
-)
+function renderReactOnTheDOM(): void {
+  ReactDOM.render(Root(), rootElement)
+}
+
+if (isDevelopment()) {
+  import('react-axe')
+    .then(axe => {
+      const axeTimeout = 1000
+      axe.default(React, ReactDOM, axeTimeout)
+      return renderReactOnTheDOM()
+    })
+    .catch(error =>
+      // eslint-disable-next-line no-console
+      console.error(
+        'Oops, something went terribly wrong while importing `react-axe` lib',
+        error
+      )
+    )
+} else {
+  renderReactOnTheDOM()
+}
 
 /*
  * If you want your app to work offline and load faster, you can change

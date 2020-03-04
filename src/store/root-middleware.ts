@@ -5,7 +5,7 @@ import { RootState } from './root-reducer'
 
 import { apiMiddleware } from 'features/api'
 import { duckMiddleware } from 'features/duck'
-import { isDevelopment } from 'utils/isDevelopment'
+import { isDevelopment } from 'utils/is-development'
 
 export const rootMiddleware = [
   ...getDefaultMiddleware<RootState>(),

@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { AxiosError, AxiosRequestConfig } from 'axios'
 import cuid from 'cuid'
@@ -15,13 +14,13 @@ interface Temp1 {
 export const apiStart = createAction(
   apiTypes.API_START,
   ({ timestamp }: Temp1) => ({ timestamp }),
-  ({ feature, cuid }: Temp1) => ({ cuid, feature })
+  temporary1 => ({ cuid: temporary1.cuid, feature: temporary1.feature })
 )()
 
 export const apiEnd = createAction(
   apiTypes.API_END,
   ({ timestamp }: Temp1) => ({ timestamp }),
-  ({ feature, cuid }: Temp1) => ({ cuid, feature })
+  temporary1 => ({ cuid: temporary1.cuid, feature: temporary1.feature })
 )()
 
 interface Temp2 {
@@ -33,7 +32,7 @@ export const accessDenied = createAction(
   apiTypes.ACCESS_DENIED,
 
   ({ pathname }: Temp2) => ({ pathname }),
-  ({ feature, cuid }: Temp2) => ({ cuid, feature })
+  temporary2 => ({ cuid: temporary2.cuid, feature: temporary2.feature })
 )()
 
 interface ApiActionFactory extends AxiosRequestConfig {
@@ -60,6 +59,7 @@ export const api = createAsyncAction(
       url = '',
       method = 'GET',
       data = null,
+      // eslint-disable-next-line no-unused-vars
       feature = '',
       accessToken = null,
       ...rest
@@ -75,11 +75,15 @@ export const api = createAsyncAction(
   [
     apiTypes.API_SUCCESS,
     <T = {}>({ data }: Temp3<T>) => ({ data }),
-    <T = {}>({ feature, cuid }: Temp3<T>) => ({ cuid, feature }),
+    <T = {}>(temporary3: Temp3<T>) => ({
+      cuid: temporary3.cuid,
+      feature: temporary3.feature,
+    }),
   ],
   [
     apiTypes.API_ERROR,
     ({ error }: Temp4) => ({ error }),
+    // eslint-disable-next-line no-shadow
     ({ feature, cuid }: Temp4) => ({ cuid, feature }),
   ]
 )()

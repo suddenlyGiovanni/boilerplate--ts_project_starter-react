@@ -1,6 +1,3 @@
-/* eslint-disable max-statements */
-/* eslint-disable callback-return */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
 import { AnyAction, Dispatch, Middleware } from 'redux'
 import { RootAction, RootState } from 'typesafe-actions'
@@ -11,14 +8,18 @@ import apiActionTypes from './types'
 const STATUS_CODE_FORBIDDEN = 403
 export const apiMiddleware: Middleware<{}, RootState, Dispatch<RootAction>> = ({
   dispatch,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) => next => async (action: AnyAction): Promise<any> => {
+  // eslint-disable-next-line callback-return
   next(action)
 
   if (action.type === apiActionTypes.API_REQUEST) {
     const { url, method, data, accessToken, headers, ...rest } = action.payload
     const { feature, cuid } = action.meta
 
-    const dataOrParams = ['GET', 'DELETE'].includes(method) ? 'params' : 'data'
+    const dataOrParameters = ['GET', 'DELETE'].includes(method)
+      ? 'params'
+      : 'data'
 
     // Axios default configs
     axios.defaults.baseURL = process.env.REACT_APP_BASE_URL || ''
@@ -29,7 +30,7 @@ export const apiMiddleware: Middleware<{}, RootState, Dispatch<RootAction>> = ({
 
     try {
       const response = await axios.request({
-        [dataOrParams]: data,
+        [dataOrParameters]: data,
         headers,
         method,
         url,

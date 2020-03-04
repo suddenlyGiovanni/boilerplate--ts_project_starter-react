@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ActionType } from 'typesafe-actions'
 
+// eslint-disable-next-line import/no-cycle
 import { duckActions, duckSelectors } from 'features/duck'
 
 type DuckState = { quacking: boolean; distance: number }
