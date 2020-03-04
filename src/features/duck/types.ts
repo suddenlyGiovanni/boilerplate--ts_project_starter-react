@@ -1,6 +1,6 @@
 export default {
-  QUACK: '@duck/QUACK',
-  SWIM: '@duck/SWIM',
   FETCH_DUCKS: '@duck/FETCH_DUCKS',
+  QUACK: '@duck/QUACK',
   SET_DUCKS: '@duck/SET_DUCKS',
+  SWIM: '@duck/SWIM',
 } as const

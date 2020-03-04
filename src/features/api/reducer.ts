@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 import { Reducer } from 'redux'
 import { ActionType } from 'typesafe-actions'
 

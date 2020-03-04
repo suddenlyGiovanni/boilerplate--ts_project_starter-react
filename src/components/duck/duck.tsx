@@ -6,7 +6,8 @@ export const Duck = memo(function Duck(): JSX.Element {
   const { distance, quacking } = useDuckState()
   const { fetchDucks, quack, swim } = useDuckDispatch()
 
-  const onClickAdd = useCallback(() => swim(100), [swim])
+  const DISTANCE = 100
+  const onClickAdd = useCallback(() => swim(DISTANCE), [swim])
   return (
     <div>
       <h3>{'Feature: Duck'}</h3>

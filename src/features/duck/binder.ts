@@ -9,8 +9,8 @@ export function useDuckState(): DuckState {
   const quacking: boolean = useSelector(duckSelectors.checkIfDuckIsQuaking)
   const distance: number = useSelector(duckSelectors.duckDistance)
   return {
-    quacking,
     distance,
+    quacking,
   }
 }
 
@@ -37,8 +37,8 @@ export function useDuckDispatch(): DuckDispatcher {
   }, [dispatch])
 
   return {
+    fetchDucks,
     quack,
     swim,
-    fetchDucks,
   }
 }

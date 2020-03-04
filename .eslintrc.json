@@ -15,7 +15,14 @@
 
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
   },
 
   "parserOptions": {
@@ -105,13 +112,62 @@
   ],
   "extends": [
     "eslint:all",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "react-app",
-    "plugin:react/recommended",
+    "plugin:react/all",
     "plugin:jsx-a11y/strict",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier/react"
   ],
 
   "rules": {
+    "callback-return": "warn",
+    "default-param-last": ["warn"],
+    "func-style": [
+      "error",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
+        "groups": [
+          "builtin",
+          "external",
+          "parent",
+          "sibling",
+          "index",
+          "internal"
+        ],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "no-magic-numbers": [
+      "warn",
+      {
+        "enforceConst": true,
+        "ignoreArrayIndexes": true
+      }
+    ],
+    "no-process-env": "off",
+    "no-ternary": "off",
+    "one-var": [
+      "error",
+      {
+        "const": "never",
+        "let": "never",
+        "separateRequires": true,
+        "var": "always"
+      }
+    ],
     "sort-imports": [
       "error",
       {
@@ -121,23 +177,39 @@
         "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
       }
     ],
-    "import/order": [
+    "sort-keys": [
+      "warn",
+      "asc",
+      {
+        "caseSensitive": true,
+        "minKeys": 2,
+        "natural": true
+      }
+    ],
+
+    "@typescript-eslint/member-delimiter-style": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "parent",
-          "sibling",
-          "index",
-          "internal"
-        ],
-        "newlines-between": "always-and-inside-groups",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        },
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
         }
       }
-    ]
+    ],
+
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/jsx-curly-brace-presence": [
+      "error",
+      { "props": "ignore", "children": "always" }
+    ],
+    "react/jsx-no-literals": ["error"],
+    "react/jsx-max-depth": ["warn", { "max": 4 }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "prettier/prettier": "warn"
   }
 }

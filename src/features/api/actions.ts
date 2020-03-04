@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { AxiosError, AxiosRequestConfig } from 'axios'
 import cuid from 'cuid'
@@ -62,7 +63,13 @@ export const api = createAsyncAction(
       feature = '',
       accessToken = null,
       ...rest
-    }: ApiActionFactory) => ({ url, method, data, accessToken, ...rest }),
+    }: ApiActionFactory) => ({
+      accessToken,
+      data,
+      method,
+      url,
+      ...rest,
+    }),
     ({ feature = '' }: ApiActionFactory) => ({ cuid: cuid(), feature }),
   ],
   [
