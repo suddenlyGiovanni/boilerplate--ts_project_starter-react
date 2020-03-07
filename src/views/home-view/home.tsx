@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Route, RouteChildrenProps, Switch } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom'
 
 import { elementContainer, homeWrapper, listElement } from './home.styles'
 
@@ -7,8 +7,7 @@ import { Duck } from 'components/duck/duck'
 import { Header } from 'views/home-view/header/header'
 import { Main } from 'views/home-view/main/main'
 
-// eslint-disable-next-line no-unused-vars
-export function Home(props: RouteChildrenProps): JSX.Element {
+export function Home(): JSX.Element {
   return (
     <div className={homeWrapper}>
       <Header />
@@ -23,7 +22,9 @@ export function Home(props: RouteChildrenProps): JSX.Element {
           </li>
         </ul>
         <Switch>
-          <Route component={Duck} path="/duck" />
+          <Route path="/duck">
+            <Duck />
+          </Route>
         </Switch>
       </Main>
     </div>

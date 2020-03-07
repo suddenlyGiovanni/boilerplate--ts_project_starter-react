@@ -19,8 +19,12 @@ function Root(): JSX.Element {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route component={Home} path="/" />
-            <Route component={Home} />
+            <Route path="/">
+              <Home />
+            </Route>
+            <Route>
+              <Home />
+            </Route>
           </Switch>
         </BrowserRouter>
       </Provider>
