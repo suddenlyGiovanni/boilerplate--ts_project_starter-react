@@ -24,7 +24,7 @@ export const rootMiddleware = [
 ]
 
 if (isDevelopment()) {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line global-require, import/no-extraneous-dependencies
   rootMiddleware.push(require('redux-logger').default)
 }
 
