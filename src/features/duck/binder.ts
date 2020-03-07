@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ActionType } from 'typesafe-actions'
 
+// eslint-disable-next-line import/no-cycle
 import { duckActions, duckSelectors } from 'features/duck'
 
 type DuckState = { quacking: boolean; distance: number }
@@ -9,8 +10,8 @@ export function useDuckState(): DuckState {
   const quacking: boolean = useSelector(duckSelectors.checkIfDuckIsQuaking)
   const distance: number = useSelector(duckSelectors.duckDistance)
   return {
-    quacking,
     distance,
+    quacking,
   }
 }
 
@@ -37,8 +38,8 @@ export function useDuckDispatch(): DuckDispatcher {
   }, [dispatch])
 
   return {
+    fetchDucks,
     quack,
     swim,
-    fetchDucks,
   }
 }

@@ -10,6 +10,7 @@ export type ApiState = unknown[]
 const initialState: ApiState = []
 
 export const apiReducer: Reducer<ApiState, ApiAction> = (
+  // eslint-disable-next-line default-param-last
   state = initialState,
   action
 ) => {

@@ -1,4 +1,3 @@
-import { RootState } from 'typesafe-actions'
 /**
  * @description Selectors
  * In case your state shape is more complex you need selectors in order to map parts of the`state`
@@ -11,8 +10,12 @@ import { RootState } from 'typesafe-actions'
  * ** interface ** of the duck.
  */
 
+import { RootState } from 'typesafe-actions'
+
+const BASE_DISTANCE = 1000
+
 export const checkIfDuckIsInRange = (state: RootState): boolean =>
-  state.duck.distance > 1000
+  state.duck.distance > BASE_DISTANCE
 
 export const checkIfDuckIsQuaking = (state: RootState): boolean =>
   state.duck.quacking

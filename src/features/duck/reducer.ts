@@ -1,8 +1,3 @@
-import { Reducer } from 'redux'
-import { getType, ActionType } from 'typesafe-actions'
-
-import * as duckActions from './actions'
-
 /**
  * @description Reducers
  * It's a good practice to keep your **state shape** in a comment above the reducers, just to have
@@ -14,6 +9,11 @@ import * as duckActions from './actions'
  * NOTE: Let's keep it simple for now with `switch` statements and abstract later.
  */
 
+import { Reducer } from 'redux'
+import { ActionType, getType } from 'typesafe-actions'
+
+import * as duckActions from './actions'
+
 export type DucksAction = ActionType<typeof duckActions>
 
 export type DucksState = Readonly<{
@@ -23,11 +23,12 @@ export type DucksState = Readonly<{
 }>
 
 const initialState: DucksState = {
-  quacking: false,
   distance: 0,
+  quacking: false,
 }
 
 export const duckReducer: Reducer<DucksState, DucksAction> = (
+  // eslint-disable-next-line default-param-last
   state = initialState,
   action
 ) => {
@@ -51,12 +52,14 @@ export const duckReducer: Reducer<DucksState, DucksAction> = (
   }
 }
 
-// export const duckReducer = createReducer<DucksState>(initialState, {
-//   [getType(actions.quack)]: (state, action) => {
-//     state.quacking = !state.quacking
-//   },
-//   [getType(actions.swim)]: (state, action) => {
-//     const { distance } = action.payload
-//     state.distance = state.distance + distance
-//   },
-// })
+/*
+ * Export const duckReducer = createReducer<DucksState>(initialState, {
+ *   [getType(actions.quack)]: (state, action) => {
+ *     state.quacking = !state.quacking
+ *   },
+ *   [getType(actions.swim)]: (state, action) => {
+ *     const { distance } = action.payload
+ *     state.distance = state.distance + distance
+ *   },
+ * })
+ */

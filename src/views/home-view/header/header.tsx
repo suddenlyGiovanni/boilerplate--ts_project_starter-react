@@ -1,11 +1,11 @@
 import React from 'react'
 
 import {
-  headerWrapper,
-  headerContainer,
-  logo,
   editCopy,
+  headerContainer,
+  headerWrapper,
   link,
+  logo,
 } from './header.styles'
 
 import reactLogo from 'assets/logo.svg'

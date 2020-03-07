@@ -1,4 +1,5 @@
 import { css } from 'emotion/macro'
+
 export const homeWrapper = css`
   display: flex;
   flex-direction: column;

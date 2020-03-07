@@ -1,0 +1,279 @@
+{
+  "root": true,
+
+  "parser": "babel-eslint",
+
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-hooks",
+    "eslint-comments",
+    "jest",
+    "promise",
+    "unicorn",
+    "sonarjs"
+  ],
+
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": false
+  },
+
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"]
+  },
+
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "project": "./tsconfig.json",
+
+        // typescript-eslint specific options
+        "warnOnUnsupportedTypeScriptVersion": true
+      },
+      "plugins": ["@typescript-eslint"],
+      // If adding a typescript-eslint version of an existing ESLint rule,
+      // make sure to disable the ESLint rule here.
+      "rules": {
+        // TypeScript's `noFallthroughCasesInSwitch` option is more robust (#6906)
+        "default-case": "off",
+        // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/291)
+        "no-dupe-class-members": "off",
+        // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/477)
+        "no-undef": "off",
+
+        // Add TypeScript specific rules (and turn off ESLint equivalents)
+        "@typescript-eslint/consistent-type-assertions": "warn",
+        "no-array-constructor": "off",
+        "@typescript-eslint/no-array-constructor": "warn",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": [
+          "warn",
+          {
+            "functions": false,
+            "classes": false,
+            "variables": false,
+            "typedefs": false
+          }
+        ],
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-expressions": [
+          "error",
+          {
+            "allowShortCircuit": true,
+            "allowTernary": true,
+            "allowTaggedTemplates": true
+          }
+        ],
+        "no-unused-vars": "warn",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "args": "none",
+            "ignoreRestSiblings": true
+          }
+        ],
+        "no-useless-constructor": "off",
+        "@typescript-eslint/no-useless-constructor": "warn"
+      }
+    }
+  ],
+  "extends": [
+    "react-app",
+    "plugin:react/all",
+    "plugin:jsx-a11y/strict",
+
+    "eslint:all",
+    "airbnb-typescript",
+    "airbnb/hooks",
+
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+
+    "plugin:eslint-comments/recommended",
+
+    "plugin:jest/all",
+    "plugin:promise/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:sonarjs/recommended",
+
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+
+  "rules": {
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
+    ],
+    "@typescript-eslint/semi": ["off"],
+    "callback-return": "warn",
+    "default-param-last": ["warn"],
+    "func-style": [
+      "error",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    "import/extensions": ["warn", "never"],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
+        "groups": [
+          "builtin",
+          "external",
+          "parent",
+          "sibling",
+          "index",
+          "internal"
+        ],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "no-magic-numbers": [
+      "warn",
+      {
+        "enforceConst": true,
+        "ignoreArrayIndexes": true
+      }
+    ],
+    "no-process-env": "off",
+    "no-ternary": "off",
+    "one-var": [
+      "error",
+      {
+        "const": "never",
+        "let": "never",
+        "separateRequires": true,
+        "var": "always"
+      }
+    ],
+    "prettier/prettier": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "children": "always",
+        "props": "ignore"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".tsx"]
+      }
+    ],
+    "react/jsx-max-depth": [
+      "warn",
+      {
+        "max": 4
+      }
+    ],
+    "react/jsx-no-literals": [
+      "off",
+      {
+        "noStrings": true
+      }
+    ],
+    "semi": "off",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
+    "sort-keys": [
+      "warn",
+      "asc",
+      {
+        "caseSensitive": true,
+        "minKeys": 2,
+        "natural": true
+      }
+    ],
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/filename-case": [
+      "error",
+      {
+        "case": "kebabCase"
+      }
+    ],
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "whitelist": {
+          "props": true
+        }
+      }
+    ],
+    "eslint-comments/disable-enable-pair": ["error", { "allowWholeFile": true }]
+  }
+}

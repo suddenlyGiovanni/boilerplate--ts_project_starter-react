@@ -1,6 +1,6 @@
-commitlint.config.js
-serviceWorker.ts
-wallaby.js
 ./cypress/tsconfig.json
-node_modules
+serviceWorker.ts
+commitlint.config.js
 coverage
+node_modules
+wallaby.js
