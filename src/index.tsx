@@ -1,13 +1,13 @@
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import * as serviceWorker from './serviceWorker'
 
 import { store } from 'store'
 import { isDevelopment } from 'utils/is-development'
-import { Home } from 'views/home-view/home'
+import { Home } from 'views/home-view/home.view'
 
 import 'styles/index.css'
 
@@ -18,10 +18,10 @@ function Root(): JSX.Element {
     <StrictMode>
       <Provider store={store}>
         <BrowserRouter>
-          <Switch>
-            <Route component={Home} path="/" />
-            <Route component={Home} />
-          </Switch>
+          <Routes>
+            <Route path="/*" element={<Home />} />
+            {/* Define here other routes */}
+          </Routes>
         </BrowserRouter>
       </Provider>
     </StrictMode>
