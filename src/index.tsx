@@ -1,11 +1,10 @@
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import * as serviceWorker from './serviceWorker'
 
-import { store } from 'store'
+import { AppProviders } from 'context'
 import { isDevelopment } from 'utils'
 import { Home } from 'views'
 
@@ -16,14 +15,14 @@ const rootElement = document.querySelector('#root')
 function Root(): JSX.Element {
   return (
     <StrictMode>
-      <Provider store={store}>
+      <AppProviders>
         <BrowserRouter>
           <Routes>
             <Route path="/*" element={<Home />} />
             {/* Define here other routes */}
           </Routes>
         </BrowserRouter>
-      </Provider>
+      </AppProviders>
     </StrictMode>
   )
 }
