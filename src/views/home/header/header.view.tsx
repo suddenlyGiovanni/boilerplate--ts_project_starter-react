@@ -17,7 +17,7 @@ export function Header(): JSX.Element {
         <img alt="logo" className={logo} src={reactLogo} />
         <p className={editCopy}>
           {'Edit '}
-          <code>{'src/views/home-view/home'}</code>
+          <code>{'src/views/home/home.view'}</code>
           {' and save to reload.'}
         </p>
         <a

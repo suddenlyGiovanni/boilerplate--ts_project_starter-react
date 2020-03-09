@@ -3,8 +3,8 @@ import { NavLink, Route, Routes } from 'react-router-dom'
 
 import { elementContainer, homeWrapper, listElement } from './home.styles'
 
-import { Header } from 'views/home-view/header/header.view'
-import { Main } from 'views/home-view/main/main.view'
+import { Header } from 'views/home/header/header.view'
+import { Main } from 'views/home/main/main.view'
 
 const Duck = lazy(() => import('components/duck/duck.component'))
 const Other = lazy(() => import('components/other/other.component'))
