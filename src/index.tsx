@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker'
 
 import { store } from 'store'
 import { isDevelopment } from 'utils/is-development'
-import { Home } from 'views/home-view/home.view'
+import { Home } from 'views/home/home.view'
 
 import 'styles/index.css'
 
@@ -29,7 +29,7 @@ function Root(): JSX.Element {
 }
 
 function renderReactOnTheDOM(): void {
-  ReactDOM.render(Root(), rootElement)
+  ReactDOM.createRoot(rootElement as Element).render(<Root />)
 }
 
 if (isDevelopment()) {
