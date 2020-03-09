@@ -3,6 +3,7 @@ import { NavLink, Route, Routes } from 'react-router-dom'
 
 import { elementContainer, homeWrapper, listElement } from './home.styles'
 
+import { LoadingIndicator } from 'components'
 import { Header } from 'views/home/header/header.view'
 import { Main } from 'views/home/main/main.view'
 
@@ -22,7 +23,7 @@ export function Home(): JSX.Element {
             <NavLink to="other">{'Other'}</NavLink>
           </li>
         </ul>
-        <Suspense fallback={<div>{'Loading...'}</div>}>
+        <Suspense fallback={<LoadingIndicator testId="home-children" />}>
           <Routes>
             <Route path="duck" element={<Duck />} />
             <Route path="other" element={<Other />} />

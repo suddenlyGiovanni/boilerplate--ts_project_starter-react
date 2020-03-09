@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 
 import { store } from 'store'
-import { isDevelopment } from 'utils/is-development'
-import { Home } from 'views/home/home.view'
+import { isDevelopment } from 'utils'
+import { Home } from 'views'
 
 import 'styles/index.css'
 
