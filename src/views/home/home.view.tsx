@@ -9,7 +9,7 @@ import { Main } from 'views/home/main/main.view'
 
 const Duck = lazy(() => import('components/duck/duck.component'))
 const Other = lazy(() => import('components/other/other.component'))
-export function Home(): JSX.Element {
+export default function Home(): JSX.Element {
   return (
     <div className={homeWrapper}>
       <Header />
