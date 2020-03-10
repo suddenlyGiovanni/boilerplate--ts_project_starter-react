@@ -7,18 +7,28 @@ import React, {
 
 interface State {
   error: null | Error
+  hasError: boolean
 }
-export class ErrorBoundary extends PureComponent<undefined, State> {
-  public constructor(props: undefined) {
+
+interface Props {
+  /** A fallback react tree to show when a ErrorBoundary child (like React.lazy) suspends */
+  fallback: NonNullable<ReactNode> | null
+}
+export class ErrorBoundary extends PureComponent<Props, State> {
+  public constructor(props: Props) {
     super(props)
-    this.state = { error: null }
+    this.state = {
+      // eslint-disable-next-line react/no-unused-state
+      error: null,
+      hasError: false,
+    }
   }
 
   static getDerivedStateFromError: GetDerivedStateFromError<
     void,
     State
   > = error => {
-    return { error }
+    return { error, hasError: true }
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
@@ -27,21 +37,9 @@ export class ErrorBoundary extends PureComponent<undefined, State> {
     console.log(error, errorInfo)
   }
 
-  private tryAgain = (): void => this.setState({ error: null })
-
   public render(): ReactNode {
-    const { error } = this.state
-    const { children } = this.props
-    return error ? (
-      <div>
-        {'There was an error. '}
-        <button onClick={this.tryAgain} type="button">
-          {'try again'}
-        </button>
-        <pre style={{ whiteSpace: 'normal' }}>{error.message}</pre>
-      </div>
-    ) : (
-      children
-    )
+    const { hasError } = this.state
+    const { children, fallback } = this.props
+    return hasError ? fallback : children
   }
 }
