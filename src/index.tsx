@@ -10,8 +10,6 @@ import { Home } from 'views'
 
 import 'styles/index.css'
 
-const rootElement = document.querySelector('#root')
-
 function Root(): JSX.Element {
   return (
     <StrictMode>
@@ -27,7 +25,8 @@ function Root(): JSX.Element {
   )
 }
 
-function renderReactOnTheDOM(): void {
+const rootElement = document.querySelector('#root')
+function attachReactToTheDOM(): void {
   ReactDOM.createRoot(rootElement as Element).render(<Root />)
 }
 
@@ -36,7 +35,7 @@ if (isDevelopment()) {
     .then(axe => {
       const axeTimeout = 1000
       axe.default(React, ReactDOM, axeTimeout)
-      return renderReactOnTheDOM()
+      return attachReactToTheDOM()
     })
     .catch(error =>
       // eslint-disable-next-line no-console
@@ -46,7 +45,7 @@ if (isDevelopment()) {
       )
     )
 } else {
-  renderReactOnTheDOM()
+  attachReactToTheDOM()
 }
 
 /*
