@@ -1,9 +1,4 @@
-import React, {
-  ErrorInfo,
-  GetDerivedStateFromError,
-  PureComponent,
-  ReactNode,
-} from 'react'
+import React, { ErrorInfo, GetDerivedStateFromError, ReactNode } from 'react'
 
 interface State {
   error: null | Error
@@ -14,7 +9,7 @@ interface Props {
   /** A fallback react tree to show when a ErrorBoundary child (like React.lazy) suspends */
   fallback: NonNullable<ReactNode> | null
 }
-export class ErrorBoundary extends PureComponent<Props, State> {
+export class ErrorBoundary extends React.PureComponent<Props, State> {
   public constructor(props: Props) {
     super(props)
     this.state = {
