@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-hooks */
 /* eslint-disable no-magic-numbers */
-import { client } from '../api-client'
+import { client } from '../api-client.service'
 
 import { apiUrl, localStorageTokenKey } from 'config'
 
