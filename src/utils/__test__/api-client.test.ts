@@ -30,6 +30,7 @@ describe('api-client', () => {
         ...responseMock,
         json: () => Promise.resolve(),
       })
+    const { signal } = new AbortController()
 
     // act:
     client('foo')
@@ -39,6 +40,7 @@ describe('api-client', () => {
     expect(window.fetch).toHaveBeenCalledWith(url('foo'), {
       headers: { 'content-type': 'application/json' },
       method: 'GET',
+      signal,
     })
   })
 
@@ -52,6 +54,7 @@ describe('api-client', () => {
         ...responseMock,
         json: () => Promise.resolve(),
       })
+    const { signal } = new AbortController()
 
     // act:
     client('foo')
@@ -64,6 +67,7 @@ describe('api-client', () => {
         'content-type': 'application/json',
       },
       method: 'GET',
+      signal,
     })
 
     // clean up:
@@ -78,11 +82,15 @@ describe('api-client', () => {
         ...responseMock,
         json: () => Promise.resolve(),
       })
+
+    const { signal } = new AbortController()
+
     // act:
     client('foo', {
       credentials: 'omit',
       headers: { 'content-type': 'fake-type' },
       mode: 'no-cors',
+      signal,
     })
 
     // assert:
@@ -92,6 +100,7 @@ describe('api-client', () => {
       headers: { 'content-type': 'fake-type' },
       method: 'GET',
       mode: 'no-cors',
+      signal,
     })
   })
 })

@@ -21,20 +21,32 @@ export enum HttpVerb {
 }
 
 type Config = Omit<RequestInit, 'body'> & { body?: unknown }
+type Abort = () => void
 
-export function client<T>(endpoint: string, requestInit?: Config): Promise<T> {
-  const config = configRequestInit(requestInit)
+export async function client<T>(
+  endpoint: string,
+  requestInit?: Config
+): Promise<[T, Abort]> {
+  const [config, controller] = configRequestInit(requestInit)
   const url = `${apiUrl}/${endpoint}`
-  return window.fetch(url, config).then<T>(response => response.json())
+
+  const response = await window.fetch(url, config)
+  const data = await response.json()
+  // const promise = window.fetch(url, config).then<T>(response => response.json())
+  const abort = controller.abort.bind(controller)
+  return [data, abort]
 }
 
-function configRequestInit({
-  body,
-  headers,
-  ...customConfig
-}: Config = {}): RequestInit {
+function configRequestInit({ body, headers, ...customConfig }: Config = {}): [
+  RequestInit,
+  AbortController
+] {
   const token = window.localStorage.getItem(localStorageTokenKey)
   const methodInit = body ? HttpVerb.POST : HttpVerb.GET
+
+  const controller = new AbortController()
+  const abortSignal: AbortSignal = controller.signal
+
   const headersInit = {
     'content-type': 'application/json',
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -43,10 +55,13 @@ function configRequestInit({
 
   const bodyInit: BodyInit | undefined = body ? JSON.stringify(body) : undefined
 
-  return {
+  const config = {
     body: bodyInit,
     headers: headersInit,
     method: methodInit,
+    signal: abortSignal,
     ...customConfig,
   }
+
+  return [config, controller]
 }

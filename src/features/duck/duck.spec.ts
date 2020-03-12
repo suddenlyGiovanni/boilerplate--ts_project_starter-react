@@ -91,7 +91,7 @@ describe('feature: `duck`', () => {
 
     it('checkIfDuckIsInRange', () => {
       expect.hasAssertions()
-      const state1 = getInitialState({ distance: 1001 }) // ?
+      const state1 = getInitialState({ distance: 1001 })
       const rootState1 = getRootState(state1)
 
       expect(selectors.checkIfDuckIsInRange(initialRootState)).toBe(false)
