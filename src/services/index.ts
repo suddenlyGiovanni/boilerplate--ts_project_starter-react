@@ -1,4 +1,4 @@
-import { client } from './api-client.service'
+import { client } from './api-client/api-client.service'
 import * as localStorage from './local-storage.service'
 import * as logger from './logger.service'
 
