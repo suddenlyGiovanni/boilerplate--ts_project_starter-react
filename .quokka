@@ -1,0 +1,16 @@
+{
+  "babel": {
+    "ts": true,
+    "presets": [
+      "react-app"
+    ]
+  },
+  "env": {
+    "params": {
+      "env": "NODE_PATH=./src"
+    }
+  },
+  "plugins": [
+    "jsdom-quokka-plugin"
+  ]
+}
